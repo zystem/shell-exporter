@@ -1,0 +1,1 @@
+./shell-exporter -path ./script
