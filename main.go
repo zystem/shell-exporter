@@ -110,9 +110,9 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 
 	for scriptName, cacheData := range cache {
 		// Output script exit code, file access error, and JSON parsing error as separate metrics
-		fmt.Fprintf(w, "script_exporter_error{error_name=\"script_exit_code\",script_name=\"%s\"} %d\n", scriptName, cacheData.ExitCode)
-		fmt.Fprintf(w, "script_exporter_error{error_name=\"file_access_error\",script_name=\"%s\"} %d\n", scriptName, cacheData.FileAccessError)
-		fmt.Fprintf(w, "script_exporter_error{error_name=\"json_parse_error\",script_name=\"%s\"} %d\n", scriptName, cacheData.ParseError)
+		fmt.Fprintf(w, "shell_exporter_error{error_name=\"script_exit_code\",script_name=\"%s\"} %d\n", scriptName, cacheData.ExitCode)
+		fmt.Fprintf(w, "shell_exporter_error{error_name=\"file_access_error\",script_name=\"%s\"} %d\n", scriptName, cacheData.FileAccessError)
+		fmt.Fprintf(w, "shell_exporter_error{error_name=\"json_parse_error\",script_name=\"%s\"} %d\n", scriptName, cacheData.ParseError)
 
 		// Output the metrics directly as they are in Prometheus format
 		for _, metric := range cacheData.Metrics {
